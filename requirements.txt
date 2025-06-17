@@ -1,0 +1,7 @@
+dash
+pandas
+scikit-learn
+plotly
+joblib
+dash-bootstrap-components 
+plotly
