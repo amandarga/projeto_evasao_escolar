@@ -121,12 +121,11 @@ app.layout = dbc.Container([
         ]),
     ], id="modal-login", is_open=True, centered=True),
 
-    html.Div(id='conteudo-dashboard', style={'display': 'none'})
+    html.Div(id='conteudo-dashboard', children=layout_dashboard(), style={'display': 'none'})
 ])
 
 @app.callback(
     Output('login-status', 'children'),
-    Output('conteudo-dashboard', 'children'),
     Output('conteudo-dashboard', 'style'),
     Output('modal-login', 'is_open'),
     Input('botao-login', 'n_clicks'),
@@ -139,21 +138,20 @@ def validar_login(n_clicks, usuario, senha, token):
     if usuario == 'admin' and senha == '123' and token == '654321':
         with open("app.log", "a") as f:
             f.write(f"[{datetime.datetime.now()}] Login OK - Usuário: {usuario}\n")
-        return dbc.Alert("Login OK ✅", color="success"), layout_dashboard(), {'display': 'block'}, False
+        return dbc.Alert("Login OK ✅", color="success"), {'display': 'block'}, False
     else:
         with open("app.log", "a") as f:
             f.write(f"[{datetime.datetime.now()}] Falha Login - Usuário: {usuario}\n")
-        return dbc.Alert("Erro na autenticação ❌", color="danger"), "", {'display': 'none'}, True
+        return dbc.Alert("Erro na autenticação ❌", color="danger"), {'display': 'none'}, True
 
 @app.callback(
     Output("conteudo-dashboard", "style"),
-    Output("conteudo-dashboard", "children"),
     Output("modal-login", "is_open"),
     Input("logout-btn", "n_clicks"),
     prevent_initial_call=True
 )
 def realizar_logout(n):
-    return {'display': 'none'}, "", True
+    return {'display': 'none'}, True
 
 @app.callback(
     Output('conteudo-grafico', 'children'),
