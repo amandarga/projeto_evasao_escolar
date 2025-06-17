@@ -3,5 +3,6 @@ pandas
 scikit-learn
 plotly
 joblib
-dash-bootstrap-components 
-plotly
+dash-bootstrap-components
+imbalanced-learn
+gunicorn
