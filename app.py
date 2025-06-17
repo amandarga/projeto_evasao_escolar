@@ -8,7 +8,7 @@ import dash_bootstrap_components as dbc
 import plotly.io as pio
 
 # Carregar dados
-caminho_dados = "../dados/AbandonoEscolar_RendaMedia_2013_2023.csv"
+caminho_dados = "dados/AbandonoEscolar_RendaMedia_2013_2023.csv"
 df = pd.read_csv(caminho_dados)
 df['Evasao_Alta'] = (df['Taxa_Abandono'] > 20).astype(int)
 
