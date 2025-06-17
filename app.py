@@ -148,8 +148,5 @@ def download_graph(n_clicks):
     img_bytes = pio.to_image(fig_risco_2025, format="png", width=800, height=600, scale=2)
     return dcc.send_bytes(img_bytes, filename="previsao_evasao_2025.png")
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
-server = app.server  # ← OBRIGATÓRIO
-
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080, debug=True)
